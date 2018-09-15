@@ -1,0 +1,24 @@
+Constraints
+
+1<= T <= 10
+1<= n <= 10^5
+1<= A[i] <= 2*10^4
+1<= i <= N
+
+Sample Input
+
+2
+3
+1 2 3
+4
+1 2 3 3
+
+Sample Output
+
+NO
+YES
+
+Explanation
+===========
+For the first test case, no such index exists.
+For the second test case,A[0]+A[1]=A[3], therefore index 2 satisfies the given conditions.

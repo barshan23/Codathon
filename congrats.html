@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+		<script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+		<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/gsap/1.18.0/TweenMax.min.js"></script>
+		<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.2/underscore-min.js"></script>
+		<style type="text/css" src="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css"></style>
+<style type="text/css">
+@import url(https://fonts.googleapis.com/css?family=Sigmar+One);
+body {
+  background: #3da1d1;
+  color: #fff;
+  overflow: hidden;
+}
+#congrats {
+  position: absolute;
+  top: calc(50% - 50px);
+  width: 550px;
+  height: 100px;
+  line-height: 1;
+  text-align: center;
+  margin: 0 auto;
+  left: 0;
+  right: 0;
+}
+#title {
+  transform-origin: 50% 50%;
+  font-size: 50px;
+  font-family: 'Sigmar One', cursive;
+  cursor: pointer;
+  z-index: 2;
+  position: absolute;
+  top: 0;
+  text-align: center;
+  width: 100%;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+}
+.particle {
+  height: 50px;
+  width: 50px;
+  position: absolute;
+  top: 45%;
+  left: 45%;
+  z-index: 1;
+  font-size: 30px;
+}
+.star {
+  color: #ffcc00;
+}
+.blob {
+  background: #d5f2ff;
+  background: rgba(255, 204, 0, 0.25);
+  border-radius: 50%;
+  display: block;
+}
+
+</style>
+
+<script type="text/javascript">
+// Click "Congratulations!" to play animation
+var particles = ['.blob', '.star'],
+	 $congratsSection = $('#congrats'),
+	 $title = $('#title');
+
+$(function() {
+	init({
+		numberOfStars: 20,
+		numberOfBlobs: 10
+	});
+		 
+	fancyPopIn();
+});
+
+$congratsSection.click(fancyPopIn);
+
+function fancyPopIn() {
+	reset();
+	animateText();
+	
+	for (var i = 0, l = particles.length; i < l; i++) {
+		animateParticles(particles[i]);
+	}
+}
+
+function animateText() {
+	TweenMax.from($title, 0.65, {
+		scale: 0.4,
+		opacity: 0,
+		rotation: 15,
+		ease: Back.easeOut.config(5),
+	});
+}
+
+function animateParticles(selector) {
+	var xSeed = _.random(350, 380);
+	var ySeed = _.random(120, 170);
+	
+	$.each($(selector), function(i) {
+		var $particle = $(this);
+		var speed = _.random(1, 4);
+		var rotation = _.random(20, 100);
+		var scale = _.random(0.8, 1.5);
+		var x = _.random(-xSeed, xSeed);
+		var y = _.random(-ySeed, ySeed);
+
+		TweenMax.to($particle, speed, {
+			x: x,
+			y: y,
+			ease: Power1.easeOut,
+			opacity: 0,
+			rotation: rotation,
+			scale: scale,
+			onStartParams: [$particle],
+			onStart: function($element) {
+				$element.css('display', 'block');
+			},
+			onCompleteParams: [$particle],
+			onComplete: function($element) {
+				$element.css('display', 'none');
+			}
+		});
+	});
+}
+
+function reset() {
+	for (var i = 0, l = particles.length; i < l; i++) {
+		$.each($(particles[i]), function() {
+			TweenMax.set($(this), { x: 0, y: 0, opacity: 1 });
+		});
+	}
+	
+	TweenMax.set($title, { scale: 1, opacity: 1, rotation: 0 });
+}
+
+function init(properties) {
+	for (var i = 0; i < properties.numberOfStars; i++) {
+	  $congratsSection.append('<div class="particle star fa fa-star ' + i + '"></div>');
+	}
+	
+	for (var i = 0; i < properties.numberOfBlobs; i++) {
+	  $congratsSection.append('<div class="particle blob ' + i + '"></div>');
+	}	
+}
+</script>
+</head>
+<body>
+<div id='congrats'>
+  <h1 id='title'>Great job!</h1>
+</div>
+</body>
+</html>
+

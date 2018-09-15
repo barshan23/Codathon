@@ -1,0 +1,16 @@
+<h5><b>Longest valid parentheses substring</b>				points:1000</h5>
+
+Given a string containing just the characters '(' and ')', find the length of the longest valid (well-formed) parentheses substring.
+
+For "(()", the longest valid parentheses substring is "()", which has length = 2.
+
+Another example is ")()())", where the longest valid parentheses substring is "()()", which has length = 4.
+ 
+
+Input
+The first line of input contains an integer T denoting the number of test cases. Then T test cases follow. 
+The first line of each test case contains a string S consisting only of ( and ).
+
+
+Output
+Print out the length of the longest valid substring.

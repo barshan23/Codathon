@@ -1,0 +1,76 @@
+@import url(https://fonts.googleapis.com/css?family=Sigmar+One);
+
+#question_container{
+     white-space: pre-wrap;
+}
+
+#sample_container{
+	background-color: #e3e3e3;
+	padding: 10px;
+}
+#questions .active{
+    background-color: cornflowerblue;
+}
+
+#questions .unsolved{
+    background-color: crimson;
+}
+
+#questions .solved{
+    background-color: chartreuse;
+}
+.caption{
+    color:black;
+    padding-left:30%
+}
+
+#success {
+  background: #3da1d1;
+  color: #fff;
+  overflow: hidden; 
+}
+#congrats {
+  position: absolute;
+  top: calc(50% - 50px);
+  width: 550px;
+  height: 100px;
+  line-height: 1;
+  text-align: center;
+  margin: 0 auto;
+  left: 0;
+  right: 0;
+}
+#title {
+  -webkit-transform-origin: 50% 50%;
+          transform-origin: 50% 50%;
+  font-size: 50px;
+  font-family: 'Sigmar One', cursive;
+  cursor: pointer;
+  z-index: 2;
+  position: absolute;
+  top: 0;
+  text-align: center;
+  width: 100%;
+  -moz-user-select: none;
+   -ms-user-select: none;
+       /*user-select: none;*/
+  -webkit-user-select: none;
+}
+.particle {
+  height: 50px;
+  width: 50px;
+  position: absolute;
+  top: 45%;
+  left: 45%;
+  z-index: 1;
+  font-size: 30px;
+}
+.star {
+  color: #ffcc00;
+}
+.blob {
+  background: #d5f2ff;
+  background: rgba(255, 204, 0, 0.25);
+  border-radius: 50%;
+  display: block;
+}

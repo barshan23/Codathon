@@ -1,0 +1,97 @@
+<!doctype html>
+
+<head>
+	<title>Codathon</title>
+	<script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+	<!-- Compiled and minified CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.1/css/materialize.min.css">
+
+  <!-- Compiled and minified JavaScript -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.1/js/materialize.min.js"></script>
+  
+  <script src = "https://cdnjs.cloudflare.com/ajax/libs/ace/1.2.8/ace.js" ></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+</head>
+
+<body>
+<div class="row">
+<div class="navbar-fixed col s10 offset-s2" style = "padding: 0px;">
+  <nav>
+    <div class="nav-wrapper" style="">
+      <a href="#" class="brand-logo center" style="left:41%;">Logo</a>
+    </div>
+  </nav>
+ </div>
+</div>
+<div class="row">
+
+<div class ="side-nav fixed col s2" style="padding: 0px;">
+	<ul class="collection">
+		<li class="collection-item"><a class="waves-effect" href="#">Question 1</a></li>
+		<li class="collection-item"><a class="waves-effect" href="#">Question 1</a></li>
+		<li class="collection-item"><a class="waves-effect" href="#">Question 1</a></li>
+		<li class="collection-item"><a class="waves-effect" href="#">Question 1</a></li>
+	</ul>
+</div>
+</div>
+<div>
+<div class = "row">
+<div class="col s7 offset-s2">
+	<div id = "editor"  style=" height: 50vh;">
+	</div>
+	<button class="waves-effect right">Get Value</button>
+	<h1>Typer.js is
+  <span class="typer" id="main" data-words="great,fun,lightweight,easy" data-colors="black" data-delay="100" data-deleteDelay="1000"></span>
+  <span class="cursor" data-owner="main"></span>
+</h1>
+<p>the typing effect with a pure HTML interface</p>
+	</div>
+	<div class = "col s3">
+		<ul class="collection">
+		<li class="collection-item avatar" id="q1"> <img src="3.png" alt="" class="circle"><a href="#">Question 1</a></li>
+		<li class="collection-item"><a href="#">Question 1</a></li>
+		<li class="collection-item"><a href="#">Question 1</a></li>
+		<li class="collection-item"><a href="#">Question 1</a></li>
+	</ul>
+	</div>
+</div>
+<div class="row">
+	<div class="col s10 offset-s2">
+		
+	</div>
+</div>
+	</div>
+<h3></h3>
+</body>
+  	<script type = "text/javascript">
+  			var editor = ace.edit("editor");
+		var evtSource = new EventSource('leaderBoard.php');
+		editor.setTheme("ace/theme/monokai");
+		editor.getSession().setMode("ace/mode/c_cpp");
+		$("button").click(function(){
+			console.log(editor.getValue());	
+		});
+
+		$("#q1").on('click',function(){
+		//evtSource.onmessage = function(e){
+			//console.log(e.data);
+			var animationName = 'animated flipOutY';
+			$("#q1").addClass(animationName).one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend',function(){
+				var animation = 'animated flipInY';
+				$(this). html("changed");
+				$("#q1").removeClass(animationName);
+				$("#q1").addClass(animation).one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend',function(){
+				
+				$(this).removeClass(animation);});
+			});
+			
+				
+		});
+	</script>
+	<script type="text/javascript" src="./script/typer.js"></script>
+	<script type="text/javascript">
+		$('h3').typeTo("New Text");
+
+	</script>
+</html>
