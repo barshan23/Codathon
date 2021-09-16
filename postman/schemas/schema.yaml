@@ -1,7 +1,7 @@
 openapi: 3.0.0
 info:
   version: '1'
-  title: '5'
+  title: test
 servers:
   - url: 'https://petstore.swagger.io/v1'
 paths:
